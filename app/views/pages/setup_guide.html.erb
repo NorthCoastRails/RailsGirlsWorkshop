@@ -1,0 +1,202 @@
+<% content_for :title, "Setup Guide - Rails Girls Workshop" %>
+
+<div class="card">
+  <h1>Development Environment Setup</h1>
+  
+  <p class="lead">
+    Choose your operating system below for detailed setup instructions. We'll help you install 
+    Ruby, Rails, and all the tools you need to start building web applications.
+  </p>
+
+  <div class="highlight">
+    <h3>⚡ Quick Check</h3>
+    <p>If you already have a development environment, check if you have:</p>
+    <ul>
+      <li>Ruby 3.0 or higher</li>
+      <li>Rails 7.0 or higher</li>
+      <li>Git version control</li>
+      <li>A text editor or IDE</li>
+    </ul>
+  </div>
+</div>
+
+<div class="setup-options">
+  <div class="card">
+    <h2>🪟 Windows Setup</h2>
+    <p>Best option: Use Windows Subsystem for Linux (WSL) for a Unix-like development environment.</p>
+    
+    <h3>Prerequisites</h3>
+    <div class="highlight">
+      <h4>Check Your Windows Version</h4>
+      <p>Press <code>Windows + R</code>, type <code>winver</code>, and press Enter.</p>
+      <p><strong>Required:</strong> Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11.</p>
+    </div>
+
+    <h3>Step 1: Install WSL 2</h3>
+    <pre><code># Open PowerShell as Administrator and run:
+wsl --install
+
+# This will install WSL 2 with Ubuntu by default
+# Restart your computer when prompted</code></pre>
+
+    <h3>Step 2: Setup Ubuntu</h3>
+    <ul>
+      <li>Open "Ubuntu" from Start Menu</li>
+      <li>Create a username and password</li>
+      <li>Update the system:</li>
+    </ul>
+    <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+
+    <h3>Step 3: Install Development Tools</h3>
+    <pre><code># Install essential build tools
+sudo apt install -y curl git build-essential
+
+# Install Ruby using rbenv
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+
+# Add rbenv to your PATH
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install Ruby
+rbenv install 3.2.3
+rbenv global 3.2.3
+
+# Install Rails
+gem install rails</code></pre>
+
+    <h3>Step 4: Install a Text Editor</h3>
+    <p>We recommend <strong>Visual Studio Code</strong> with the WSL extension:</p>
+    <ul>
+      <li>Download VS Code from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+      <li>Install the "WSL" extension</li>
+      <li>Open your project folder with <code>code .</code> from WSL terminal</li>
+    </ul>
+
+    <%= link_to "Detailed Windows Guide", "#", class: "btn" %>
+  </div>
+
+  <div class="card">
+    <h2>🍎 macOS Setup</h2>
+    <p>Use Homebrew package manager for easy installation of development tools.</p>
+    
+    <h3>Step 1: Install Homebrew</h3>
+    <pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+
+    <h3>Step 2: Install Development Tools</h3>
+    <pre><code># Install Git
+brew install git
+
+# Install rbenv for Ruby version management
+brew install rbenv
+
+# Setup rbenv
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+
+# Install Ruby
+rbenv install 3.2.3
+rbenv global 3.2.3
+
+# Install Rails
+gem install rails</code></pre>
+
+    <h3>Step 3: Text Editor</h3>
+    <ul>
+      <li><strong>VS Code:</strong> <code>brew install --cask visual-studio-code</code></li>
+      <li><strong>Sublime Text:</strong> <code>brew install --cask sublime-text</code></li>
+      <li><strong>Atom:</strong> <code>brew install --cask atom</code></li>
+    </ul>
+
+    <%= link_to "Detailed macOS Guide", "#", class: "btn" %>
+  </div>
+
+  <div class="card">
+    <h2>🐧 Linux Setup</h2>
+    <p>Instructions for Ubuntu/Debian-based distributions.</p>
+    
+    <h3>Step 1: Update System</h3>
+    <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+
+    <h3>Step 2: Install Dependencies</h3>
+    <pre><code>sudo apt install -y curl git build-essential libssl-dev libreadline-dev zlib1g-dev</code></pre>
+
+    <h3>Step 3: Install Ruby</h3>
+    <pre><code># Install rbenv
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+
+# Setup rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install Ruby
+rbenv install 3.2.3
+rbenv global 3.2.3
+
+# Install Rails
+gem install rails</code></pre>
+
+    <%= link_to "Detailed Linux Guide", "#", class: "btn" %>
+  </div>
+</div>
+
+<div class="card">
+  <h2>🔍 Verify Your Installation</h2>
+  <p>After completing the setup for your operating system, verify everything works:</p>
+  
+  <pre><code># Check Ruby version
+ruby --version
+# Should show Ruby 3.2.3 or higher
+
+# Check Rails version  
+rails --version
+# Should show Rails 7.0 or higher
+
+# Check Git
+git --version
+# Should show Git version info</code></pre>
+
+  <div class="highlight">
+    <h3>Next Steps</h3>
+    <p>Once your environment is set up:</p>
+    <ol>
+      <li>Clone this workshop repository</li>
+      <li>Navigate to the Workshop Steps to start building</li>
+      <li>Join our community for support and questions</li>
+    </ol>
+    
+    <%= link_to "Continue to Workshop →", workshop_steps_path, class: "btn" %>
+  </div>
+</div>
+
+<style>
+.setup-options {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 1200px) {
+  .setup-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.setup-options .card h2 {
+  border-bottom: 2px solid #ff6b9d;
+  padding-bottom: 0.5rem;
+}
+
+.setup-options pre {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border: none;
+}
+
+.setup-options code {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border: none;
+}
+</style>

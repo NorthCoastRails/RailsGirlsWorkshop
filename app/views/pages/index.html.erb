@@ -1,0 +1,108 @@
+<% content_for :title, "Welcome to Rails Girls Workshop" %>
+
+<div class="card">
+  <h1>Welcome to Rails Girls Workshop! 🎉</h1>
+  
+  <p class="lead">
+    A Ruby on Rails application that serves as your comprehensive guide to learning web development. 
+    Whether you're completely new to programming or looking to expand your skills, this workshop 
+    will guide you through building your first web application.
+  </p>
+
+  <div class="highlight">
+    <h3>What You'll Learn</h3>
+    <ul>
+      <li>Setting up your development environment</li>
+      <li>Understanding Ruby programming basics</li>
+      <li>Building web applications with Ruby on Rails</li>
+      <li>Working with databases and data models</li>
+      <li>Creating beautiful user interfaces</li>
+      <li>Deploying your application to the web</li>
+    </ul>
+  </div>
+
+  <h3>Get Started</h3>
+  <p>Choose your path based on your current setup:</p>
+  
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
+    <%= link_to "Setup Guide", setup_guide_path, class: "btn" %>
+    <%= link_to "Workshop Steps", workshop_steps_path, class: "btn btn-secondary" %>
+    <%= link_to "Resources", resources_path, class: "btn btn-secondary" %>
+  </div>
+
+  <div class="highlight">
+    <h3>About Rails Girls</h3>
+    <p>
+      Rails Girls is a global, non-profit volunteer community that organizes free programming 
+      workshops for women and non-binary individuals. Our mission is to give tools and a 
+      community for women to understand technology and to build their ideas.
+    </p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Workshop Modules</h2>
+  
+  <div class="modules-grid">
+    <div class="module-card">
+      <h3>🔧 Environment Setup</h3>
+      <p>Get your computer ready for Rails development with step-by-step instructions for Windows, macOS, and Linux.</p>
+      <%= link_to "Start Setup →", setup_guide_path %>
+    </div>
+    
+    <div class="module-card">
+      <h3>📚 Workshop Steps</h3>
+      <p>Follow along with our guided tutorial to build your first Rails application from scratch.</p>
+      <%= link_to "Begin Workshop →", workshop_steps_path %>
+    </div>
+    
+    <div class="module-card">
+      <h3>📖 Resources</h3>
+      <p>Additional learning materials, documentation, and community resources to continue your journey.</p>
+      <%= link_to "View Resources →", resources_path %>
+    </div>
+  </div>
+</div>
+
+<style>
+.lead {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.module-card {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.module-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.module-card h3 {
+  color: #ff6b9d;
+  margin-top: 0;
+}
+
+.module-card a {
+  color: #ff6b9d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.module-card a:hover {
+  text-decoration: underline;
+}
+</style>
