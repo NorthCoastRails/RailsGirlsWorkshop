@@ -1,0 +1,173 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/* Rails Girls Workshop Styles */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #ff6b9d, #f06292);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.logo .rails {
+  color: #ffeb3b;
+}
+
+.logo .girls {
+  color: #ffffff;
+}
+
+.logo .workshop {
+  color: #e1f5fe;
+}
+
+.navigation {
+  margin-top: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.2);
+  text-decoration: none;
+  color: white;
+}
+
+/* Main Content */
+.main-content {
+  min-height: calc(100vh - 180px);
+  padding: 2rem 0;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+h1 {
+  color: #ff6b9d;
+  border-bottom: 3px solid #ff6b9d;
+  padding-bottom: 0.5rem;
+}
+
+/* Cards and sections */
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.highlight {
+  background-color: #fff3e0;
+  border-left: 4px solid #ff6b9d;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #ff6b9d;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #f06292;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Code blocks */
+pre, code {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.2rem 0.4rem;
+}
+
+/* Footer */
+.footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navigation {
+    margin-top: 0.5rem;
+  }
+  
+  .nav-link {
+    display: block;
+    margin: 0.25rem 0;
+  }
+  
+  .logo a {
+    font-size: 1.5rem;
+  }
+}

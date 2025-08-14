@@ -1,0 +1,341 @@
+<% content_for :title, "Workshop Steps - Rails Girls Workshop" %>
+
+<div class="card">
+  <h1>Rails Girls Workshop Steps</h1>
+  
+  <p class="lead">
+    Follow these step-by-step instructions to build your first Ruby on Rails web application. 
+    We'll create a simple idea board where you can collect and share your thoughts!
+  </p>
+
+  <div class="highlight">
+    <h3>🎯 What We're Building</h3>
+    <p>A simple "Idea Board" web application where users can:</p>
+    <ul>
+      <li>Add new ideas with a title and description</li>
+      <li>View all ideas in a list</li>
+      <li>Edit existing ideas</li>
+      <li>Delete ideas they no longer need</li>
+    </ul>
+  </div>
+</div>
+
+<div class="workshop-steps">
+  <div class="card">
+    <h2>Step 1: Create Your Rails Application</h2>
+    
+    <p>First, let's create a new Rails application called "ideaboard":</p>
+    
+    <pre><code># Navigate to your projects directory
+cd ~/projects  # or wherever you keep your code
+
+# Create a new Rails app
+rails new ideaboard
+cd ideaboard
+
+# Open in your text editor
+code .  # if using VS Code</code></pre>
+
+    <div class="highlight">
+      <h4>🔍 What just happened?</h4>
+      <p>Rails generated a complete web application structure with:</p>
+      <ul>
+        <li><code>app/</code> - Your application code (models, views, controllers)</li>
+        <li><code>config/</code> - Configuration files</li>
+        <li><code>db/</code> - Database files and migrations</li>
+        <li><code>public/</code> - Static files (images, CSS, JavaScript)</li>
+      </ul>
+    </div>
+
+    <h3>Test Your Application</h3>
+    <pre><code># Start the Rails server
+rails server
+
+# Open your browser and go to:
+# http://localhost:3000</code></pre>
+
+    <p>You should see the Rails welcome page! 🎉</p>
+  </div>
+
+  <div class="card">
+    <h2>Step 2: Generate Your First Model</h2>
+    
+    <p>Now let's create an "Idea" model to store our ideas:</p>
+    
+    <pre><code># Generate the Idea model with title and description
+rails generate model Idea title:string description:text
+
+# Run the database migration
+rails db:migrate</code></pre>
+
+    <div class="highlight">
+      <h4>🔍 What just happened?</h4>
+      <p>Rails created:</p>
+      <ul>
+        <li><code>app/models/idea.rb</code> - The Idea model</li>
+        <li><code>db/migrate/xxx_create_ideas.rb</code> - Database migration</li>
+        <li>A test file for your model</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Step 3: Create the Controller and Views</h2>
+    
+    <p>Generate a controller to handle web requests for ideas:</p>
+    
+    <pre><code># Generate the Ideas controller with standard actions
+rails generate controller Ideas index show new create edit update destroy</code></pre>
+
+    <h3>Update the Routes</h3>
+    <p>Open <code>config/routes.rb</code> and replace the generated routes with:</p>
+    
+    <pre><code>Rails.application.routes.draw do
+  root 'ideas#index'
+  resources :ideas
+end</code></pre>
+
+    <h3>Implement the Controller</h3>
+    <p>Open <code>app/controllers/ideas_controller.rb</code> and add:</p>
+    
+    <pre><code>class IdeasController < ApplicationController
+  def index
+    @ideas = Idea.all
+  end
+
+  def show
+    @idea = Idea.find(params[:id])
+  end
+
+  def new
+    @idea = Idea.new
+  end
+
+  def create
+    @idea = Idea.new(idea_params)
+    if @idea.save
+      redirect_to @idea, notice: 'Idea was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @idea = Idea.find(params[:id])
+  end
+
+  def update
+    @idea = Idea.find(params[:id])
+    if @idea.update(idea_params)
+      redirect_to @idea, notice: 'Idea was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @idea = Idea.find(params[:id])
+    @idea.destroy
+    redirect_to ideas_path, notice: 'Idea was successfully deleted.'
+  end
+
+  private
+
+  def idea_params
+    params.require(:idea).permit(:title, :description)
+  end
+end</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Step 4: Create the Views</h2>
+    
+    <p>Now let's create beautiful views for our ideas. Update these files in <code>app/views/ideas/</code>:</p>
+
+    <h3>Index View (app/views/ideas/index.html.erb)</h3>
+    <pre><code>&lt;h1&gt;My Ideas&lt;/h1&gt;
+
+&lt;%= link_to 'New Idea', '/ideas/new', class: 'btn' %&gt;
+
+&lt;div class="ideas-grid"&gt;
+  &lt;% @ideas.each do |idea| %&gt;
+    &lt;div class="idea-card"&gt;
+      &lt;h3&gt;&lt;%= link_to idea.title, "/ideas/#{idea.id}" %&gt;&lt;/h3&gt;
+      &lt;p&gt;&lt;%= truncate(idea.description, length: 100) %&gt;&lt;/p&gt;
+      &lt;div class="idea-actions"&gt;
+        &lt;%= link_to 'Edit', "/ideas/#{idea.id}/edit" %&gt;
+        &lt;%= link_to 'Delete', "/ideas/#{idea.id}", method: :delete, 
+                    confirm: 'Are you sure?', 
+                    class: 'delete-link' %&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;% end %&gt;
+&lt;/div&gt;</code></pre>
+
+    <h3>New/Edit Form (app/views/ideas/_form.html.erb)</h3>
+    <pre><code>&lt;%= form_with model: idea do |form| %&gt;
+  &lt;div class="field"&gt;
+    &lt;%= form.label :title %&gt;
+    &lt;%= form.text_field :title %&gt;
+  &lt;/div&gt;
+
+  &lt;div class="field"&gt;
+    &lt;%= form.label :description %&gt;
+    &lt;%= form.text_area :description, rows: 5 %&gt;
+  &lt;/div&gt;
+
+  &lt;div class="actions"&gt;
+    &lt;%= form.submit class: 'btn' %&gt;
+    &lt;%= link_to 'Cancel', '/ideas' %&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;</code></pre>
+
+    <h3>New View (app/views/ideas/new.html.erb)</h3>
+    <pre><code>&lt;h1&gt;New Idea&lt;/h1&gt;
+
+&lt;%= render 'form', idea: @idea %&gt;</code></pre>
+
+    <h3>Show View (app/views/ideas/show.html.erb)</h3>
+    <pre><code>&lt;h1&gt;&lt;%= @idea.title %&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;%= @idea.description %&gt;&lt;/p&gt;
+
+&lt;div class="actions"&gt;
+  &lt;%= link_to 'Edit', "/ideas/#{@idea.id}/edit", class: 'btn' %&gt;
+  &lt;%= link_to 'Delete', "/ideas/#{@idea.id}", method: :delete, 
+              confirm: 'Are you sure?', class: 'btn btn-danger' %&gt;
+  &lt;%= link_to 'Back to Ideas', '/ideas' %&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Step 5: Add Some Styling</h2>
+    
+    <p>Add this CSS to <code>app/assets/stylesheets/application.css</code>:</p>
+    
+    <pre><code>/* Ideas styling */
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.idea-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.idea-card h3 a {
+  color: #ff6b9d;
+  text-decoration: none;
+}
+
+.idea-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.field input[type="text"],
+.field textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.delete-link {
+  color: #dc3545;
+}</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Step 6: Test Your Application</h2>
+    
+    <p>Now let's test everything works:</p>
+    
+    <pre><code># Make sure your server is running
+rails server
+
+# Visit http://localhost:3000</code></pre>
+
+    <div class="highlight">
+      <h3>🎉 Congratulations!</h3>
+      <p>You should now be able to:</p>
+      <ul>
+        <li>View your ideas list (currently empty)</li>
+        <li>Click "New Idea" to add an idea</li>
+        <li>Fill in the form and create your first idea</li>
+        <li>View, edit, and delete ideas</li>
+      </ul>
+    </div>
+
+    <h3>Next Steps</h3>
+    <p>Your basic Rails application is complete! Here are some ideas for extending it:</p>
+    <ul>
+      <li>Add user authentication</li>
+      <li>Allow file uploads for idea images</li>
+      <li>Add categories or tags to ideas</li>
+      <li>Deploy your app to the internet</li>
+    </ul>
+
+    <%= link_to "View Resources for Next Steps →", resources_path, class: "btn" %>
+  </div>
+</div>
+
+<style>
+.workshop-steps .card {
+  margin-bottom: 3rem;
+}
+
+.workshop-steps h2 {
+  color: #ff6b9d;
+  border-bottom: 2px solid #ff6b9d;
+  padding-bottom: 0.5rem;
+}
+
+.workshop-steps pre {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border: none;
+  margin: 1rem 0;
+}
+
+.workshop-steps code {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border: none;
+}
+
+.workshop-steps .highlight {
+  background-color: #e8f5e8;
+  border-left: 4px solid #28a745;
+}
+
+.step-number {
+  background-color: #ff6b9d;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+</style>
