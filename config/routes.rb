@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Root path - Welcome page for Rails Girls Workshop
+  # Root path - Welcome page for North Coast Rails Workshop
   root "pages#index"
 
   # Workshop Pages

@@ -1,6 +1,6 @@
-# Rails Girls Workshop Platform 🎉
+# North Coast Rails Workshop Platform 🎉
 
-A comprehensive Ruby on Rails application that serves as the official guide platform for Rails Girls workshops. This platform provides step-by-step instructions, environment setup guides, and resources for learning web development with Ruby on Rails.
+A comprehensive Ruby on Rails application that serves as the official guide platform for North Coast Rails workshops. This platform provides step-by-step instructions, environment setup guides, and resources for learning web development with Ruby on Rails.
 
 ## 🌟 Purpose
 
@@ -8,9 +8,9 @@ This application serves as:
 - **Workshop Guide**: Step-by-step tutorials for building your first Rails application
 - **Setup Assistant**: Environment-specific installation instructions for Windows (WSL), macOS, and Linux
 - **Resource Hub**: Curated learning materials, documentation, and community links
-- **Community Platform**: Base for Rails Girls events worldwide
+- **Community Platform**: Base for North Coast Rails events
 
-Perfect for Rails Girls workshops, coding bootcamps, and anyone starting their web development journey!
+Perfect for North Coast Rails workshops, coding bootcamps, and anyone starting their web development journey!
 
 ## 🚀 Quick Start
 
@@ -84,7 +84,7 @@ The `/docs` folder contains detailed setup guides:
 
 ### Contributing to Your Local Event
 
-Fork this repository and customize it for your Rails Girls event:
+Fork this repository and customize it for your North Coast Rails event:
 
 1. Fork the repository
 2. Update event-specific information
@@ -106,7 +106,7 @@ Fork this repository and customize it for your Rails Girls event:
 1. Start with the **Setup Guide** for your operating system
 2. Follow the **Workshop Steps** to build your first app
 3. Explore **Resources** for continued learning
-4. Join the Rails Girls community
+4. Join the North Coast Rails community
 
 ### For Organizers
 
@@ -117,7 +117,7 @@ Fork this repository and customize it for your Rails Girls event:
 
 ## 🤝 Contributing
 
-We welcome contributions! This platform is designed to be improved by the Rails Girls community.
+We welcome contributions! This platform is designed to be improved by the North Coast Rails community.
 
 ### How to Contribute
 
@@ -140,22 +140,24 @@ We welcome contributions! This platform is designed to be improved by the Rails 
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🌍 Rails Girls Community
+## 🌍 North Coast Rails Community
 
-- **Global Website**: [railsgirls.com](https://railsgirls.com/)
-- **Twitter**: [@railsgirls](https://twitter.com/railsgirls)
-- **GitHub**: [github.com/railsgirls](https://github.com/railsgirls)
+North Coast Rails workshops draw inspiration from Rails Girls and other excellent resources including:
+- **Rails Girls**: [railsgirls.com](https://railsgirls.com/) - Original inspiration
+- **The Odin Project**: [theodinproject.com](https://theodinproject.com/) - Comprehensive curriculum
+- **Ruby on Rails Guides**: [guides.rubyonrails.org](https://guides.rubyonrails.org/) - Official documentation
 
 ## 💬 Support
 
 - **Issues**: Report bugs or request features via GitHub Issues
-- **Community**: Join Rails Girls Slack or Discord communities
-- **Stack Overflow**: Tag questions with `rails-girls`
-- **Local Meetups**: Find Rails Girls events in your area
+- **Community**: Connect with other North Coast Rails learners and mentors
+- **Stack Overflow**: Tag questions with `ruby-on-rails`
+- **Local Meetups**: Join North Coast Rails events and workshops
 
 ## 🙏 Acknowledgments
 
 - Rails Girls global community for inspiration and guidance
+- The Odin Project and Ruby on Rails Guides for excellent resources
 - All workshop organizers and mentors worldwide
 - Contributors who help improve this platform
 - The Ruby on Rails core team for the amazing framework
@@ -164,4 +166,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Ready to start your Rails journey?** 🚀 [Get Started with Setup →](http://localhost:3000/setup)
 
-Built with ❤️ for the Rails Girls community
+Built with ❤️ for the North Coast Rails community
